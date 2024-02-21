@@ -2,13 +2,16 @@
 Based on the [Obsidian Sample Plugin](https://github.com/obsidianmd/obsidian-sample-plugin)
 
 ## Usage with VSCode Devcontainers
-1. Create a new directory for your plugin:
-`mkdir my-new-plugin`
-2. Clone this repository into your new directory:
-`git clone https://github.com/kon-foo/ObsidianPluginTemplate.git`
+1. Clone this repository into to a new Plugin directory:
+`git clone https://github.com/kon-foo/ObsidianPluginTemplate.git MyNewPlugin`
+2. `cd MyNewPlugin`
 3. Add the [ObsidianPluginDevContainer](https://github.com/kon-foo/ObsidianPluginDevContainer) repo as a submodule:
 `git submodule add https://github.com/kon-foo/ObsidianPluginDevContainer.git .devcontainer`
 `git submodule update --init --recursive`
+
+To update the DevContainer submodule to the latest version:
+`git submodule update --remote --merge`
+
 
 ## Releasing new releases
 Update your manifest.json with your new version number, such as 1.0.1, and the minimum Obsidian version required for your latest release.

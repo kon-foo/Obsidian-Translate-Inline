@@ -5,9 +5,16 @@ Based on the [Obsidian Sample Plugin](https://github.com/obsidianmd/obsidian-sam
 1. Clone this repository into to a new Plugin directory:
 `git clone https://github.com/kon-foo/ObsidianPluginTemplate.git MyNewPlugin`
 2. `cd MyNewPlugin`
-3. Add the [ObsidianPluginDevContainer](https://github.com/kon-foo/ObsidianPluginDevContainer) repo as a submodule:
+3. Detach this from the original repository:
+`git remote remove origin`
+4. Add the [ObsidianPluginDevContainer](https://github.com/kon-foo/ObsidianPluginDevContainer) repo as a submodule:
 `git submodule add https://github.com/kon-foo/ObsidianPluginDevContainer.git .devcontainer`
 `git submodule update --init --recursive`
+5. Add the [ObsidianPluginTestVault](https://github.com/kon-foo/ObsidianPluginTestVault) repo as a submodule:
+`git submodule add https://github.com/kon-foo/ObsidianPluginTestVault.git testVault`
+`git submodule update --init --recursive`
+6. Create a new repository on GitHub and push the code to it:
+`git remote add origin <new-plugin-repo-url>`
 
 To update the DevContainer submodule to the latest version:
 `git submodule update --remote --merge`

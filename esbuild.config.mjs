@@ -57,12 +57,22 @@ const context = await esbuild.context({
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
 	outfile: "main.js",
+	plugins: [
+		{
+			name: "copy-to-vault",
+			setup(build) {
+				build.onEnd(() => {
+					copyToVault();
+				});
+			},
+		},
+	],
+
 });
 
 if (prod) {
 	await context.rebuild();
 	process.exit(0);
 } else {
-	await copyToVault();
 	await context.watch();
 }

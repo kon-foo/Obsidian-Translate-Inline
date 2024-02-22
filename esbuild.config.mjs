@@ -11,12 +11,23 @@ if you want to view the source, please visit the github repository of this plugi
 `;
 
 const copyToVault = () => {
-	fs.copyFileSync('main.js', 'testVault/.obsidian/plugins/plugin-in-development/main.js');
-	fs.copyFileSync('manifest.json', 'testVault/.obsidian/plugins/plugin-in-development/manifest.json');
+	const targetDir = path.join('testVault/.obsidian/plugins', pluginDirName);
+
+	// Check if the target directory exists, create it if not
+	if (!fs.existsSync(targetDir)) {
+		fs.mkdirSync(targetDir, { recursive: true });
+		console.log(`Created plugin directory: ${targetDir}`);
+	}
+
+	// Copy main.js and manifest.json to the target directory
+	fs.copyFileSync('main.js', path.join(targetDir, 'main.js'));
+	fs.copyFileSync('manifest.json', path.join(targetDir, 'manifest.json'));
 	console.log('Files copied to test vault.');
   };
 
 const prod = (process.argv[2] === "production");
+const manifestJson = JSON.parse(fs.readFileSync(path.resolve('manifest.json'), 'utf8'));
+const pluginDirName = manifestJson.id;
 
 const context = await esbuild.context({
 	banner: {

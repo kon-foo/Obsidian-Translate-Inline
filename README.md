@@ -10,9 +10,11 @@ Based on the [Obsidian Sample Plugin](https://github.com/obsidianmd/obsidian-sam
 4. Add the [ObsidianPluginDevContainer](https://github.com/kon-foo/ObsidianPluginDevContainer) repo as a submodule:
 `git submodule add https://github.com/kon-foo/ObsidianPluginDevContainer.git .devcontainer`
 `git submodule update --init --recursive`
+`git add .gitmodules .devcontainer`
 5. Add the [ObsidianPluginTestVault](https://github.com/kon-foo/ObsidianPluginTestVault) repo as a submodule:
 `git submodule add https://github.com/kon-foo/ObsidianPluginTestVault.git testVault`
 `git submodule update --init --recursive`
+`git add .gitmodules testVault`
 6. Create a new repository on GitHub and push the code to it:
 `git remote add origin <new-plugin-repo-url>`
 

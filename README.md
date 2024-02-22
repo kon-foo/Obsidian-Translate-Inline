@@ -23,7 +23,7 @@ git add .gitmodules testVault
 4. Let VSCode do its magic and build the DevContainer. You need the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed and of course [Docker](https://www.docker.com/products/docker-desktop) up and running.
 
 - Open the repository in VSCode
-- Click on the green "Open a Remote Window" button in the bottom left corner or press `Ctrl+Shift+P` and select `Dev-Containers: Reopen in Container`
+- Press `Ctrl+Shift+P` and select `Dev-Containers: Reopen in Container`
 - After a successfule build, the `setup.js` script will be executed and guides you through the customization. (TBH: At the moment it just asks for your plugin name an replaces it everywhere. Remember to change the other field in the manifest.json)
 - Afterwards the watcher starts. On every code change, a new `main.js` file gets build, copied to the test vault and the "Hot Reload" plugin should refresh your Obsidian instance.
 

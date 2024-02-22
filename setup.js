@@ -48,7 +48,7 @@ function updateProject() {
     const packageJsonPath = path.join(__dirname, 'package.json');
     const mainTsPath = path.join(__dirname, 'main.ts');
     // const esbuildConfigPath = path.join(__dirname, 'esbuild.config.mjs');
-    const communityPluginsJsonPath = path.join(__dirname, 'testVault', 'community-plugins.json');
+    const communityPluginsJsonPath = path.join(__dirname, 'testVault', '.obsidian', 'community-plugins.json');
 
     // Name replacement
     replaceInFile(manifestJsonPath, new RegExp(`"name": "${currentPluginName}"`), `"name": "${pluginName}"`);

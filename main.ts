@@ -1,17 +1,15 @@
 import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
 
-// Remember to rename these classes and interfaces!
-
-interface MyPluginSettings {
+interface PluginTemplateSettings {
 	mySetting: string;
 }
 
-const DEFAULT_SETTINGS: MyPluginSettings = {
+const DEFAULT_SETTINGS: PluginTemplateSettings = {
 	mySetting: 'default'
 }
 
-export default class MyPlugin extends Plugin {
-	settings: MyPluginSettings;
+export default class PluginTemplate extends Plugin {
+	settings: PluginTemplateSettings;
 
 	async onload() {
 		await this.loadSettings();
@@ -22,7 +20,7 @@ export default class MyPlugin extends Plugin {
 			new Notice('This is a notice!');
 		});
 		// Perform additional things with the ribbon
-		ribbonIconEl.addClass('my-plugin-ribbon-class');
+		ribbonIconEl.addClass('plugin-template-ribbon-class');
 
 		// This adds a status bar item to the bottom of the app. Does not work on mobile apps.
 		const statusBarItemEl = this.addStatusBarItem();
@@ -108,9 +106,9 @@ class SampleModal extends Modal {
 }
 
 class SampleSettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
+	plugin: PluginTemplate;
 
-	constructor(app: App, plugin: MyPlugin) {
+	constructor(app: App, plugin: PluginTemplate) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}

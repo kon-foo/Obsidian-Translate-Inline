@@ -1,12 +1,13 @@
 {
-	"name": "obsidian-plugin-template",
-	"version": "1.0.0",
+	"name": "plugin-template",
+	"version": "0.1.0",
 	"description": "This is a plugin template for Obsidian (https://obsidian.md)",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
-		"version": "node version-bump.mjs && git add manifest.json versions.json"
+		"version": "node version-bump.mjs && git add manifest.json versions.json",
+		"setup": "node setup.js"
 	},
 	"keywords": [],
 	"author": "",

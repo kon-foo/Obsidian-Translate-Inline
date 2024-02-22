@@ -1,25 +1,45 @@
 ## Obsidian Plugin Template
-Based on the [Obsidian Sample Plugin](https://github.com/obsidianmd/obsidian-sample-plugin)
+This is a template for creating an Obsidian plugin. It extends the [Obsidian Sample Plugin](https://github.com/obsidianmd/obsidian-sample-plugin) with a [VSCode DevContainer](https://github.com/kon-foo/ObsidianPluginDevContainer), a [Test Vault](https://github.com/kon-foo/ObsidianPluginTestVault) and some utility scripts and smart presets. After setting things up you should have a fully functional development environment with a test vault, your enabled plugin and hot reloading (cudos to [pjeby](https://github.com/pjeby/hot-reload)). 
 
-## Usage with VSCode Devcontainers
+## How to use this template
 1. Clone this repository into to a new Plugin directory:
-`git clone https://github.com/kon-foo/ObsidianPluginTemplate.git MyNewPlugin`
-2. `cd MyNewPlugin`
-3. Detach this from the original repository:
-`git remote remove origin`
-4. Add the [ObsidianPluginDevContainer](https://github.com/kon-foo/ObsidianPluginDevContainer) repo as a submodule:
-`git submodule add https://github.com/kon-foo/ObsidianPluginDevContainer.git .devcontainer`
-`git submodule update --init --recursive`
-`git add .gitmodules .devcontainer`
-5. Add the [ObsidianPluginTestVault](https://github.com/kon-foo/ObsidianPluginTestVault) repo as a submodule:
-`git submodule add https://github.com/kon-foo/ObsidianPluginTestVault.git testVault`
-`git submodule update --init --recursive`
-`git add .gitmodules testVault`
-6. Create a new repository on GitHub and push the code to it:
+```bash
+git clone https://github.com/kon-foo/ObsidianPluginTemplate.git MyNewPlugin && cd MyNewPlugin
+```
+
+2. Detach the repository from the remote origin:
+```bash
+git remote remove origin
+```
+
+3. Add [ObsidianPluginDevContainer](https://github.com/kon-foo/ObsidianPluginDevContainer) and [ObsidianPluginTestVault](https://github.com/kon-foo/ObsidianPluginTestVault) as a submodules:
+```bash
+git submodule add https://github.com/kon-foo/ObsidianPluginDevContainer.git .devcontainer
+git submodule add https://github.com/kon-foo/ObsidianPluginTestVault.git testVault
+git submodule update --init --recursive
+git add .gitmodules .devcontainer
+git add .gitmodules testVault
+```
+
+4. Let VSCode do its magic and build the DevContainer. You need the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed and of course [Docker](https://www.docker.com/products/docker-desktop) up and running.
+
+- Open the repository in VSCode
+- Click on the green "Open a Remote Window" button in the bottom left corner or press `Ctrl+Shift+P` and select `Dev-Containers: Reopen in Container`
+
+5. Customize your plugin:
+```bash
+npm run setup
+```
+
+
+...
+.... Create a new repository on GitHub and push the code to it:
 `git remote add origin <new-plugin-repo-url>`
 
 To update the DevContainer submodule to the latest version:
 `git submodule update --remote --merge`
+
+
 
 
 ## Releasing new releases

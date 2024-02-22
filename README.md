@@ -16,7 +16,6 @@ git remote remove origin
 ```bash
 git submodule add https://github.com/kon-foo/ObsidianPluginDevContainer.git .devcontainer
 git submodule add https://github.com/kon-foo/ObsidianPluginTestVault.git testVault
-git submodule update --init --recursive
 git add .gitmodules .devcontainer
 git add .gitmodules testVault
 ```

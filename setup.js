@@ -57,11 +57,11 @@ function updateProject() {
     // SLUG replacement
     replaceInFile(manifestJsonPath, new RegExp(`"id": "${currentPluginSlug}"`), `"id": "${slug}"`);
     replaceInFile(packageJsonPath, new RegExp(`"name": "${currentPluginSlug}"`), `"name": "${slug}"`);
-    replaceInFile(communityPluginsJsonPath, new RegExp(`"plugin-template"`), `"${slug}"`);
-    replaceInFile(mainTsPath, new RegExp(`plugin-template`, "g"), slug);
+    replaceInFile(communityPluginsJsonPath, new RegExp(`"${currentPluginSlug}"`), `"${slug}"`);
+    replaceInFile(mainTsPath, new RegExp(`${currentPluginSlug}`, "g"), slug);
 
     // PascalCase replacement
-    replaceInFile(mainTsPath, new RegExp(`PluginTemplate`, "g"), pascalCaseName);
+    replaceInFile(mainTsPath, new RegExp(`${currentPluginPascalCase}`, "g"), pascalCaseName);
 
     console.log('Project customized successfully.');
     rl.close();

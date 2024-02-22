@@ -25,27 +25,32 @@ git add .gitmodules testVault
 
 - Open the repository in VSCode
 - Click on the green "Open a Remote Window" button in the bottom left corner or press `Ctrl+Shift+P` and select `Dev-Containers: Reopen in Container`
+- After a successfule build, the `setup.js` script will be executed and guides you through the customization. (TBH: At the moment it just asks for your plugin name an replaces it everywhere. Remember to change the other field in the manifest.json)
+- Afterwards the watcher starts. On every code change, a new `main.js` file gets build, copied to the test vault and the "Hot Reload" plugin should refresh your Obsidian instance.
 
-5. Customize your plugin:
-```bash
-npm run setup
-```
+5. Open your vault in Obsidian and start developing your plugin. To distinguish visually between the test vault and your real vault, the window frame has an awful yellow title bar. You can change this in [`devVaultSnippet.css`](testVault/snippets/devVaultSnippet.css). 
 
 
-...
-.... Create a new repository on GitHub and push the code to it:
-`git remote add origin <new-plugin-repo-url>`
+## How to update the template
 
-To update the DevContainer submodule to the latest version:
+To update the submodules (DevContainer and TestVault) to the latest version:
 `git submodule update --remote --merge`
 
-
-
-
 ## Releasing new releases
+[Source](https://github.com/obsidianmd/obsidian-sample-plugin)
 Update your manifest.json with your new version number, such as 1.0.1, and the minimum Obsidian version required for your latest release.
 Update your versions.json file with "new-plugin-version": "minimum-obsidian-version" so older versions of Obsidian can download an older version of your plugin that's compatible.
 Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix v. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
 Upload the files manifest.json, main.js, styles.css as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
 Publish the release.
 You can simplify the version bump process by running npm version patch, npm version minor or npm version major after updating minAppVersion manually in manifest.json. The command will bump version in manifest.json and package.json, and add the entry for the new version to versions.json
+
+## Obsidian Plugin Development Resources
+- [Obsidian Plugin Documentation](https://docs.obsidian.md/Plugins/Getting+started/Build+a+plugin)
+- [The Sample Plugin](https://github.com/obsidianmd/obsidian-sample-plugin)
+
+Feel free to add your own resources to this list.
+
+## Support Me!
+If you find these repositories helpful, I would be grateful if you would buy me some time to do more like this:
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/kon.foo)

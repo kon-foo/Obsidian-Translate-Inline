@@ -1,6 +1,6 @@
 {
 	"name": "translate-inline",
-	"version": "0.1.3",
+	"version": "0.1.5",
 	"description": "This is a plugin template for Obsidian (https://obsidian.md)",
 	"main": "main.js",
 	"scripts": {

@@ -1,7 +1,7 @@
-import { TranslationProvider, ProviderSettings } from './translationProvider';
 import { DeepLProvider } from './DeepL/provider';
 import { ReverseProvider } from './Reverse/provider';
 import { GoogleProvider } from './Google/provider';
+import { ProviderSettings, TranslationProvider } from './interface';
 
 export class TranslationProviderFactory {
 	// Cache of provider instances

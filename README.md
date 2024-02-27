@@ -46,7 +46,7 @@ It should be self evident that the text you translate is sent to the translation
 - [ ] Trigger translation by hitting `enter` or `tab` within the square bracket.
 
 ## Support Me!
-If you find these repositories helpful, I would be grateful if you would buy me some time to do more like this:
+If you find like this Plugin, I would be grateful if you would buy me some time to do more like this:
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/kon.foo)
 
 ## Developmen References:

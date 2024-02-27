@@ -1,12 +1,12 @@
 {
 	"name": "translate-inline",
-	"version": "0.1.5",
-	"description": "This is a plugin template for Obsidian (https://obsidian.md)",
+	"version": "0.1.7",
+	"description": "An Obsidian Plugin that lets you translate words and phrase without moving you fingers away from the keyboard.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
-		"version": "node version-bump.mjs && git add manifest.json versions.json",
+		"version": "node version-bump.mjs",
 		"setup": "node setup.js",
 		"lint": "tsc --noEmit && eslint ./src --ext .ts"
 	},
@@ -24,6 +24,7 @@
 		"eslint-plugin-prettier": "^5.1.3",
 		"obsidian": "latest",
 		"prettier": "3.2.5",
+		"semver": "^7.6.0",
 		"tslib": "2.4.0",
 		"typescript": "5.3.3"
 	}

@@ -152,11 +152,13 @@ export default class TranslateInlineSettingsTab extends PluginSettingTab {
 				.setDesc('Encrypt API keys using Electron secureStorage if available.')
 				.addToggle(toggle =>
 					toggle.setValue(Boolean(this.plugin.settings.useSecureStorage)).onChange(async value => {
-						if (value === true && !(safeStorage && safeStorage.isEncryptionAvailable)) {
-							new Notice('Cannot enable secureStorage. Only available on Obsidian Desktop.');
-							toggle.setValue(false);
-							return;
-						}
+						new Notice('Currently not supported.');
+						toggle.setValue(false);
+						// if (value === true && !(safeStorage && safeStorage.isEncryptionAvailable)) {
+						// 	new Notice('Cannot enable secureStorage. Only available on Obsidian Desktop.');
+						// 	toggle.setValue(false);
+						// 	return;
+						// }
 						this.plugin.settings.useSecureStorage = value;
 						await this.plugin.saveSettings();
 					})

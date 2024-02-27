@@ -1,0 +1,61 @@
+/*
+
+This CSS file will be included with your plugin, and
+available in the app when your plugin is enabled.
+
+If your plugin does not need CSS, delete this file.
+
+*/
+.mt-2 {
+  margin-top: 0.5rem !important;
+}
+
+.mt-4 {
+  margin-top: 1rem !important;
+}
+
+.mt-8 {
+  margin-top: 2rem !important;
+}
+
+
+/* Status abr styling */
+.status-bar-item.plugin-translate-inline {
+	line-height: unset;
+}
+
+.status-bar-item.plugin-translate-inline > *  {
+	border-radius: 3px !important;
+	padding: 0 0.1rem;
+}
+
+.statusbar__icon {
+	margin-left: 0.4rem;
+	margin-right: 0.2rem;
+}
+.statusbar__section--neutral {
+	background-color: unset;
+	color: unset;
+}
+
+.statusbar__section--okay {
+    background-color: rgba(100, 148, 237, 0.594);
+	color: black;
+}
+
+.statusbar__section--success {
+    background-color: #1ab63eab;
+	color: black;
+}
+
+.statusbar__section--warning {
+    background-color: #f7b500a3;
+	color: black;
+}
+
+.statusbar__section--error {
+    background-color: #ff000091;
+	color: white;
+}
+
+

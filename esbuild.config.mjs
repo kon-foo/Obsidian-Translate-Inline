@@ -17,13 +17,15 @@ const copyToVault = () => {
 	// Check if the target directory exists, create it if not
 	if (!fs.existsSync(targetDir)) {
 		fs.mkdirSync(targetDir, { recursive: true });
+		fs.writeFileSync(path.join(targetDir, '.hotreload'), '');
 		console.log(`Created plugin directory: ${targetDir}`);
 	}
 
-	// Copy main.js and manifest.json to the target directory
+	// Copy main.js, style.css & manifest.json to the target directory
 	fs.copyFileSync('main.js', path.join(targetDir, 'main.js'));
 	fs.copyFileSync('manifest.json', path.join(targetDir, 'manifest.json'));
-	console.log('Files copied to test vault.');
+	fs.copyFileSync('src/styles.css', path.join(targetDir, 'styles.css'));
+	console.log('🔥 Files copied to test vault.');
   };
 
 const prod = (process.argv[2] === "production");
@@ -34,7 +36,7 @@ const context = await esbuild.context({
 	banner: {
 		js: banner,
 	},
-	entryPoints: ["main.ts"],
+	entryPoints: ["./src/main.ts"],
 	bundle: true,
 	external: [
 		"obsidian",

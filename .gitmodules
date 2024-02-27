@@ -1,0 +1,6 @@
+[submodule ".devcontainer"]
+	path = .devcontainer
+	url = https://github.com/kon-foo/ObsidianPluginDevContainer.git
+[submodule "testVault"]
+	path = testVault
+	url = https://github.com/kon-foo/ObsidianPluginTestVault.git

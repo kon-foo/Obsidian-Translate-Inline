@@ -1,55 +1,67 @@
-## Obsidian Plugin Template
-This is a template for creating an Obsidian plugin. It extends the [Obsidian Sample Plugin](https://github.com/obsidianmd/obsidian-sample-plugin) with a [VSCode DevContainer](https://github.com/kon-foo/ObsidianPluginDevContainer), a [Test Vault](https://github.com/kon-foo/ObsidianPluginTestVault) and some utility scripts and smart presets. After setting things up you should have a fully functional development environment with a test vault, your enabled plugin and hot reloading (cudos to [pjeby](https://github.com/pjeby/hot-reload)). 
+## Obsidian Translate Inline
+Created with the help of the [Obsidian Plugin Template](https://github.com/kon-foo/ObsidianPluginTemplate). This plugin is in **open beta** and is not yet available in the community plugins list. It works-for-me™ but hasn't been tested extensively. Please report any issues you encounter.
+You can download the latest release from the [releases page]().
 
-## How to use this template
-1. Clone this repository into to a new Plugin directory:
-```bash
-git clone https://github.com/kon-foo/ObsidianPluginTemplate.git MyNewPlugin && cd MyNewPlugin
+With this plugin you can get translations without moving away from your keybord. For example translate from an auto-detected language to your default language by typing:
+```markdown
+[>Buenos días] # Translate using your default settings
+```
+As soon as the cursor leaves the square brackets, this will be replaced with:
+```markdown
+Good morning
 ```
 
-2. Detach the repository from the remote origin:
-```bash
-git remote remove origin
+You may also specify the target language inline to use a different language than the default:
+```markdown
+[>de>Buenos días] # Translate from default to German
+```
+This will translate the text to German:
+```markdown
+Guten Morgen
+```
+Of course, you can also specify the source language:
+```markdown
+[es>de>Buenos días] # Translate from Spanish to German
+[es>Buenos días] # Translate from Spanish to your default language
 ```
 
-3. Add [ObsidianPluginDevContainer](https://github.com/kon-foo/ObsidianPluginDevContainer) and [ObsidianPluginTestVault](https://github.com/kon-foo/ObsidianPluginTestVault) as a submodules:
-```bash
-git submodule add https://github.com/kon-foo/ObsidianPluginDevContainer.git .devcontainer
-git submodule add https://github.com/kon-foo/ObsidianPluginTestVault.git testVault
-git add .gitmodules .devcontainer
-git add .gitmodules testVault
-```
+### Translation Providers.
+To use this plugin, you need to have an API key from a supported translation provider. Currently, the plugin supports:
+- [DeepL](https://www.deepl.com/)
+- [Google Cloud Translation](https://cloud.google.com/translate)
+Both of these providers offer a free tier. While Google supports much more languages, DeepL is much easier to set up if you are not already familiar with Google Cloud.
 
-4. Let VSCode do its magic and build the DevContainer. You need the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed and of course [Docker](https://www.docker.com/products/docker-desktop) up and running.
+### Privacy
+It should be self evident that the text you translate is sent to the translation provider, so their privacy policy applies. The plugin itself does not collect any data. The API key is stored in the Obsidian vault in plain text (for now), so you should keep your vault secure.
 
-- Open the repository in VSCode
-- Press `Ctrl+Shift+P` and select `Dev-Containers: Reopen in Container`
-- After a successfule build, the `setup.js` script will be executed and guides you through the customization. (TBH: At the moment it just asks for your plugin name an replaces it everywhere. Remember to change the other field in the manifest.json)
-- Afterwards the watcher starts. On every code change, a new `main.js` file gets build, copied to the test vault and the "Hot Reload" plugin should refresh your Obsidian instance.
+### To-Do:
+#### Pre-Release:
+- [x] Add Electron Secure Storage for API keys (only on Desktop)
+- [x] Nicer Status Bar UI
 
-5. Open your vault in Obsidian and start developing your plugin. To distinguish visually between the test vault and your real vault, the window frame has an awful yellow title bar. You can change this in [`devVaultSnippet.css`](testVault/snippets/devVaultSnippet.css). 
-
-
-## How to update the template
-
-To update the submodules (DevContainer and TestVault) to the latest version:
-`git submodule update --remote --merge`
-
-## Releasing new releases
-[Source](https://github.com/obsidianmd/obsidian-sample-plugin)
-Update your manifest.json with your new version number, such as 1.0.1, and the minimum Obsidian version required for your latest release.
-Update your versions.json file with "new-plugin-version": "minimum-obsidian-version" so older versions of Obsidian can download an older version of your plugin that's compatible.
-Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix v. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-Upload the files manifest.json, main.js, styles.css as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-Publish the release.
-You can simplify the version bump process by running npm version patch, npm version minor or npm version major after updating minAppVersion manually in manifest.json. The command will bump version in manifest.json and package.json, and add the entry for the new version to versions.json
-
-## Obsidian Plugin Development Resources
-- [Obsidian Plugin Documentation](https://docs.obsidian.md/Plugins/Getting+started/Build+a+plugin)
-- [The Sample Plugin](https://github.com/obsidianmd/obsidian-sample-plugin)
-
-Feel free to add your own resources to this list.
+#### Later:
+- [ ] Add support for more translation providers
+- [ ] Allow to pass translation provide specific options in-line , e.g. [>some text|formal] could set the formaliy option when using DeepL.
+- [ ] Option to change syntax aka. the divider and enclose characters.
+- [ ] Trigger translation by hitting `enter` or `tab` within the square bracket.
 
 ## Support Me!
 If you find these repositories helpful, I would be grateful if you would buy me some time to do more like this:
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/kon.foo)
+
+## Developmen References:
+
+This is a list of resources and inspirations I used to create this plugin. I will transform this to a proper credits section in the future.
+
+### Other Translation Plugins:
+- [Obsidian Deepl Plugin](https://github.com/friebetill/obsidian-deepl)
+- [Obsidian Translate Plugin](https://github.com/Fevol/obsidian-translate)
+
+### Plugins that use Editor Extensions:
+- [Editor Extensions in Dataview](https://github.com/blacksmithgu/obsidian-dataview/blob/e4a6cab97b628deb22d36b73ce912abca541ad42/src/ui/lp-render.ts#L133)
+- [Smart Typography](https://github.com/mgmeyers/obsidian-smart-typography/)
+- [Cursor Location](https://github.com/spslater/obsidian-cursor-location-plugin)
+
+### Plugins that use SafeStorage:
+- [Obsidian AI Research Assistant](https://github.com/InterwebAlchemy/obsidian-ai-research-assistant/blob/main/src/views/SettingsTab.ts)
+

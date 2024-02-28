@@ -17,5 +17,7 @@ export interface TranslateInlineSettings {
 export const defaultSettings: TranslateInlineSettings = {
 	selectedProvider: 'DeepL',
 	providerSettings: {}, //falls back to the default settings defined in the provider
-	useSecureStorage: safeStorage && safeStorage.isEncryptionAvailable ? true : false
+	// useSecureStorage: safeStorage && safeStorage.isEncryptionAvailable ? true : false
+	// Disabled for now, as it's not working properly
+	useSecureStorage: false
 };

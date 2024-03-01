@@ -4,7 +4,7 @@
 	"version": "0.1.11",
 	"minAppVersion": "1.5.3",
 	"description": "An Obsidian Plugin that lets you translate words and phrase without moving you fingers away from the keyboard.",
-	"author": "Obsidian",
+	"author": "Lucas Langholf",
 	"authorUrl": "https://kon.foo",
 	"fundingUrl": "https://buymeacoffee.com/kon.foo",
 	"isDesktopOnly": true

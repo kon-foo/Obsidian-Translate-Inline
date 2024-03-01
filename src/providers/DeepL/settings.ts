@@ -21,7 +21,7 @@ export const deepLProviderSettingsMetadata: { [key: string]: ProviderSettingMeta
 	useProApi: {
 		type: 'toggle',
 		name: 'Use DeepL Pro API',
-		description: 'Use the DeepL Pro API for translations'
+		description: 'Use the DeepL Pro API for Translations'
 	}
 };
 

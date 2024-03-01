@@ -1,10 +1,10 @@
-import { PluginSettingTab, Setting, App, Notice } from 'obsidian';
+import { PluginSettingTab, Setting, App } from 'obsidian';
 
 import TranslateInline from 'main';
 import { availableProviders } from '../providers';
 
-// @ts-ignore
-const safeStorage = window.electron?.remote.safeStorage;
+// // @ts-ignore
+// const safeStorage = window.electron?.remote.safeStorage;
 
 export default class TranslateInlineSettingsTab extends PluginSettingTab {
 	plugin: TranslateInline;
@@ -19,12 +19,10 @@ export default class TranslateInlineSettingsTab extends PluginSettingTab {
 
 		containerEl.empty();
 
-		containerEl.createEl('h3', { text: 'Translate Inline Settings' });
-
 		// Provider selection dropdown
 		new Setting(containerEl)
 			.setName('Translation Provider')
-			.setDesc('Select your translation provider')
+			.setDesc('Select your translation Provider')
 			.addDropdown(drop => {
 				availableProviders.forEach(provider => {
 					drop.addOption(provider, provider);
@@ -39,7 +37,7 @@ export default class TranslateInlineSettingsTab extends PluginSettingTab {
 
 		// Provider settings
 		containerEl.createEl('div', { cls: 'mt-8' });
-		containerEl.createEl('h5', { text: `${this.plugin.settings.selectedProvider} Settings` });
+		containerEl.createEl('h5', { text: `${this.plugin.settings.selectedProvider} General` });
 
 		// API Key
 		new Setting(containerEl)
@@ -49,17 +47,15 @@ export default class TranslateInlineSettingsTab extends PluginSettingTab {
 				text
 					.setPlaceholder('Enter your API Key')
 					.setValue(this.plugin.currentProvider.settings.apiKey)
-					.onChange(async value => {
-						this.plugin.updateCurrentProviderSettings({ apiKey: value });
-					})
+					.onChange(async value => {})
 			);
 
 		this.plugin.currentProvider.getSupportedLanguages().then(({ fromLanguages, toLanguages }) => {
 			// Example of populating 'from' language dropdown
 			// Repeat similarly for 'to' language dropdown
 			new Setting(containerEl)
-				.setName('Default From Language')
-				.setDesc('Select a default source language')
+				.setName('Default source Language')
+				.setDesc('Select a default source Language')
 				.addDropdown(drop => {
 					fromLanguages.forEach(lang => {
 						drop.addOption(lang.code, lang.name);
@@ -71,8 +67,8 @@ export default class TranslateInlineSettingsTab extends PluginSettingTab {
 				});
 
 			new Setting(containerEl)
-				.setName('Default To Language')
-				.setDesc('Select a default target language')
+				.setName('Default target Language')
+				.setDesc('Select a default target Language')
 				.addDropdown(drop => {
 					toLanguages.forEach(lang => {
 						drop.addOption(lang.code, lang.name);
@@ -86,7 +82,7 @@ export default class TranslateInlineSettingsTab extends PluginSettingTab {
 			containerEl.createEl('div', { cls: 'mt-4' });
 
 			if (Object.entries(this.plugin.currentProvider.settingsMetadata).length > 0) {
-				containerEl.createEl('h6', { text: `${this.plugin.settings.selectedProvider} Exclusive Settings` });
+				containerEl.createEl('h5', { text: `${this.plugin.settings.selectedProvider} Advanced` });
 			}
 			// Iterate over the settings of the selected provider and create a setting for each
 			Object.entries(this.plugin.currentProvider.settingsMetadata || {}).forEach(([key, settingMetadata]) => {
@@ -145,26 +141,26 @@ export default class TranslateInlineSettingsTab extends PluginSettingTab {
 			});
 
 			// Advanced settings
-			containerEl.createEl('div', { cls: 'mt-8' });
-			containerEl.createEl('h5', { text: 'Advanced Settings' });
-			new Setting(containerEl)
-				.setName('Use Secure Storage')
-				.setDesc('Encrypt API keys using Electron secureStorage if available.')
-				.addToggle(toggle =>
-					toggle.setValue(Boolean(this.plugin.settings.useSecureStorage)).onChange(async value => {
-						if (value === true) {
-							new Notice('Currently not supported.');
-							toggle.setValue(false);
-						}
-						// if (value === true && !(safeStorage && safeStorage.isEncryptionAvailable)) {
-						// 	new Notice('Cannot enable secureStorage. Only available on Obsidian Desktop.');
-						// 	toggle.setValue(false);
-						// 	return;
-						// }
-						this.plugin.settings.useSecureStorage = value;
-						await this.plugin.saveSettings();
-					})
-				);
+			// containerEl.createEl('div', { cls: 'mt-8' });
+			// containerEl.createEl('h5', { text: 'Advanced' });
+			// new Setting(containerEl)
+			// 	.setName('Use secure Storage')
+			// 	.setDesc('Encrypt API keys using Electron secureStorage if available.')
+			// 	.addToggle(toggle =>
+			// 		toggle.setValue(Boolean(this.plugin.settings.useSecureStorage)).onChange(async value => {
+			// 			if (value === true) {
+			// 				new Notice('Currently not supported.');
+			// 				toggle.setValue(false);
+			// 			}
+			// 			// if (value === true && !(safeStorage && safeStorage.isEncryptionAvailable)) {
+			// 			// 	new Notice('Cannot enable secureStorage. Only available on Obsidian Desktop.');
+			// 			// 	toggle.setValue(false);
+			// 			// 	return;
+			// 			// }
+			// 			this.plugin.settings.useSecureStorage = value;
+			// 			await this.plugin.saveSettings();
+			// 		})
+			// 	);
 		});
 	}
 }

@@ -1,7 +1,7 @@
 {
 	"id": "translate-inline",
 	"name": "Translate Inline",
-	"version": "0.1.10",
+	"version": "0.1.11",
 	"minAppVersion": "1.5.3",
 	"description": "An Obsidian Plugin that lets you translate words and phrase without moving you fingers away from the keyboard.",
 	"author": "Obsidian",

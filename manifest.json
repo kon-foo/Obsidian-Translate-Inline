@@ -1,9 +1,9 @@
 {
 	"id": "translate-inline",
 	"name": "Translate Inline",
-	"version": "0.1.11",
+	"version": "0.1.12",
 	"minAppVersion": "1.5.3",
-	"description": "An Obsidian Plugin that lets you translate words and phrase without moving you fingers away from the keyboard.",
+	"description": "Translations at your fingertips. The Obsidian Plugin for inline Translations.",
 	"author": "Lucas Langholf",
 	"authorUrl": "https://kon.foo",
 	"fundingUrl": "https://buymeacoffee.com/kon.foo",

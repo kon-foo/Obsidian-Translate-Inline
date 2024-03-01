@@ -1,7 +1,7 @@
 ## Obsidian Translate Inline
 > Created with the help of the [Obsidian Plugin Template](https://github.com/kon-foo/ObsidianPluginTemplate).
 
-With this plugin you can get translations without moving your fingers away from your keybord. Translate from an auto-detected language to your default target language simply by typing:
+With this plugin you get translations at your fingertips. Translate words or entire sentences with a minimal interruption of your thought process! For example, to translate from an auto-detected language to your default target language, you can simply type:
 ```markdown
 [>Buenos días] # Translate using your default settings
 ```

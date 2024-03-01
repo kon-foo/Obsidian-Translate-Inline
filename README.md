@@ -1,5 +1,5 @@
 ## Obsidian Translate Inline
-> Created with the help of the [Obsidian Plugin Template](https://github.com/kon-foo/ObsidianPluginTemplate). 
+> Created with the help of the [Obsidian Plugin Template](https://github.com/kon-foo/ObsidianPluginTemplate).
 
 With this plugin you can get translations without moving your fingers away from your keybord. Translate from an auto-detected language to your default target language simply by typing:
 ```markdown
@@ -25,10 +25,13 @@ To use this plugin, you need to have an API key from a supported translation pro
 Both of these providers offer a free tier. While Google supports much more languages, DeepL is much easier to set up if you are not already familiar with Google Cloud.
 
 ### Privacy
-It should be self evident that the text you translate is sent to the translation provider, so their privacy policy applies. The plugin itself does not collect any data. The API key is stored in the Obsidian vault in plain text (for now), so you should keep your vault secure.
+It should be self evident that the text you translate is sent to the translation provider of your choice, so their privacy policy applies:
+- [DeepL Privacy Policy](https://www.deepl.com/privacy.html)
+- [Google Translate Data Usage](https://cloud.google.com/translate/data-usage)
+The plugin itself does not collect any data. The API key is stored in the Obsidian vault in plain text (for now), so you should keep your vault secure.
 
 ### Further Development
-This plugin is in an early "works-for-me" stage of development. For now, "works-for-me" is exactly what I need and I will only fix bugs and maybe add mobile support. If you encounter any bugs, feel free to open an issue or a pull request. 
+This plugin is in an early "works-for-me" stage of development. For now, "works-for-me" is exactly what I need and I will only fix bugs and maybe add mobile support. If you encounter any bugs, feel free to open an issue or a pull request.
 If this plugin proves to be useful to others, I do have some ideas for future features and enhancements:
 - Fancy Syntax Highlighting
 - Passing options to the translation provider (e.g. a formality setting for DeepL by using something like `[>some text|formality:less]`)
@@ -38,7 +41,7 @@ If this plugin proves to be useful to others, I do have some ideas for future fe
 - Possibility to trigger translation by hitting `enter` or `tab` within the square bracket.
 - More Translation Providers
 
-Addings more Translation Providers should be relatively easy, as the plugin is designed to be modular. If you are interested in adding a translation provider, have a look at an exisiting provider like [Google](src/providers/Google/provider.ts), implement the same interface and add it to the [provider factory](src/providers/factory.ts).
+Addings more Translation Providers should be relatively easy, as the plugin is designed to be modular. If you are interested in adding a translation provider, have a look at an exisiting provider like [Google](src/providers/Google/provider.ts), implement the same interface and add it to the [provider factory](src/providers/factory.ts). Furthermore, update the README including the privacy policy of the new provider.
 
 
 ## Support Me!

@@ -1,25 +1,18 @@
 ## Obsidian Translate Inline
-Created with the help of the [Obsidian Plugin Template](https://github.com/kon-foo/ObsidianPluginTemplate). This plugin is in **open beta** and is not yet available in the community plugins list. It works-for-me™ but hasn't been tested extensively. Please report any issues you encounter.
-You can download the latest release from the [releases page]().
+> Created with the help of the [Obsidian Plugin Template](https://github.com/kon-foo/ObsidianPluginTemplate). 
 
-With this plugin you can get translations without moving away from your keybord. For example translate from an auto-detected language to your default language by typing:
+With this plugin you can get translations without moving your fingers away from your keybord. Translate from an auto-detected language to your default target language simply by typing:
 ```markdown
 [>Buenos días] # Translate using your default settings
 ```
-As soon as the cursor leaves the square brackets, this will be replaced with:
-```markdown
-Good morning
-```
+As soon as the cursor leaves the square brackets, the translation provider of your choice will be queried and the text will be replaced with the translation.
 
 You may also specify the target language inline to use a different language than the default:
 ```markdown
-[>de>Buenos días] # Translate from default to German
+[>de>Buenos días] # Translate from the default source language to German
 ```
-This will translate the text to German:
-```markdown
-Guten Morgen
-```
-Of course, you can also specify the source language:
+
+Or specify the source language, if it is not auto-detected:
 ```markdown
 [es>de>Buenos días] # Translate from Spanish to German
 [es>Buenos días] # Translate from Spanish to your default language
@@ -34,24 +27,27 @@ Both of these providers offer a free tier. While Google supports much more langu
 ### Privacy
 It should be self evident that the text you translate is sent to the translation provider, so their privacy policy applies. The plugin itself does not collect any data. The API key is stored in the Obsidian vault in plain text (for now), so you should keep your vault secure.
 
-### To-Do:
-#### Pre-Release:
-- [x] Add Electron Secure Storage for API keys (only on Desktop)
-- [x] Nicer Status Bar UI
+### Further Development
+This plugin is in an early "works-for-me" stage of development. For now, "works-for-me" is exactly what I need and I will only fix bugs and maybe add mobile support. If you encounter any bugs, feel free to open an issue or a pull request. 
+If this plugin proves to be useful to others, I do have some ideas for future features and enhancements:
+- Fancy Syntax Highlighting
+- Passing options to the translation provider (e.g. a formality setting for DeepL by using something like `[>some text|formality:less]`)
+- Inline Dropdowns for language selection
+- Encrypted API key storage (though this would require a good solution for mobile support)
+- Option to customize the syntax aka. the divider and enclose characters.
+- Possibility to trigger translation by hitting `enter` or `tab` within the square bracket.
+- More Translation Providers
 
-#### Later:
-- [ ] Add support for more translation providers
-- [ ] Allow to pass translation provide specific options in-line , e.g. [>some text|formal] could set the formaliy option when using DeepL.
-- [ ] Option to change syntax aka. the divider and enclose characters.
-- [ ] Trigger translation by hitting `enter` or `tab` within the square bracket.
+Addings more Translation Providers should be relatively easy, as the plugin is designed to be modular. If you are interested in adding a translation provider, have a look at an exisiting provider like [Google](src/providers/Google/provider.ts), implement the same interface and add it to the [provider factory](src/providers/factory.ts).
+
 
 ## Support Me!
-If you find like this Plugin, I would be grateful if you would buy me some time to do more like this:
+If you find this plugin to be of any use to you, I would be grateful if you would buy me some time to do more like this:
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/kon.foo)
 
 ## Developmen References:
 
-This is a list of resources and inspirations I used to create this plugin. I will transform this to a proper credits section in the future.
+This is a list of resources and inspirations I used to create this plugin:
 
 ### Other Translation Plugins:
 - [Obsidian Deepl Plugin](https://github.com/friebetill/obsidian-deepl)

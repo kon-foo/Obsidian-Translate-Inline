@@ -51,6 +51,7 @@ writeFileSync("versions.json", JSON.stringify(versions, null, "\t"));
 try {
   execSync(`git tag -a ${nextVersion} -m "${nextVersion}"`);
   execSync(`git add manifest.json versions.json package.json`);
+  execSync(`git commit -m "Bump version to ${nextVersion}"`);
   console.log(`Successfully tagged version ${nextVersion}`);
 } catch (error) {
   console.error('Failed to tag the version in Git:', error);

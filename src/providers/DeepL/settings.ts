@@ -12,16 +12,16 @@ export const deepLProviderSettingsMetadata: { [key: string]: ProviderSettingMeta
 		description: 'The formality of the translation',
 		options: [
 			{ label: 'Default', value: 'default' },
-			{ label: 'More Formal', value: 'more' },
-			{ label: 'Less Formal', value: 'less' },
-			{ label: 'Prefer More Formal', value: 'prefer_more' },
-			{ label: 'Prefer Less Formal', value: 'prefer_less' }
+			{ label: 'More formal', value: 'more' },
+			{ label: 'Less formal', value: 'less' },
+			{ label: 'Prefer more formal', value: 'prefer_more' },
+			{ label: 'Prefer less formal', value: 'prefer_less' }
 		]
 	},
 	useProApi: {
 		type: 'toggle',
 		name: 'Use DeepL Pro API',
-		description: 'Use the DeepL Pro API for Translations'
+		description: 'Use the DeepL Pro API for translations'
 	}
 };
 

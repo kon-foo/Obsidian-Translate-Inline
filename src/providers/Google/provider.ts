@@ -16,13 +16,8 @@ export class GoogleProvider implements TranslationProvider {
 	}
 
 	async translate(text: string, fromLanguage: string, toLanguage: string): Promise<Translation> {
-		// Missing Deepl Features:
-		// - context <-- would be super interesting to automatically add part of the note as context or be able to specify context with Google specific syntax.
-		// - and many more...
-		// Refference: https://www.google.com/de/docs-api/translate-text/translate-text
 		try {
 			const useFromLanguage = fromLanguage !== 'AUTO';
-
 			const response = await request({
 				url:
 					'https://translation.googleapis.com/language/translate/v2?' +
@@ -48,7 +43,7 @@ export class GoogleProvider implements TranslationProvider {
 	}
 
 	async getSupportedLanguages(): Promise<{ fromLanguages: Language[]; toLanguages: Language[] }> {
-		supportedLanguages.push({ code: 'AUTO', name: 'Detect Language' });
+		supportedLanguages.push({ code: 'AUTO', name: 'Detect language' });
 		// Transform to UpperCase
 		supportedLanguages.forEach(lang => {
 			lang.code = lang.code.toUpperCase();

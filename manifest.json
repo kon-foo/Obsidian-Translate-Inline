@@ -1,9 +1,9 @@
 {
 	"id": "translate-inline",
 	"name": "Translate Inline",
-	"version": "0.1.17",
+	"version": "0.1.18",
 	"minAppVersion": "1.5.3",
-	"description": "Translations at your fingertips. The Obsidian Plugin for inline Translations.",
+	"description": "Translations at your fingertips. A plugin for inline Translations.",
 	"author": "Lucas Langholf",
 	"authorUrl": "https://kon.foo/",
 	"fundingUrl": "https://buymeacoffee.com/kon.foo",

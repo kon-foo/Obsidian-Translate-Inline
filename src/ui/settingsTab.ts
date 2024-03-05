@@ -21,8 +21,8 @@ export default class TranslateInlineSettingsTab extends PluginSettingTab {
 
 		// Provider selection dropdown
 		new Setting(containerEl)
-			.setName('Translation Provider')
-			.setDesc('Select your translation Provider')
+			.setName('Translation provider')
+			.setDesc('Select your translation provider')
 			.addDropdown(drop => {
 				availableProviders.forEach(provider => {
 					drop.addOption(provider, provider);
@@ -37,7 +37,7 @@ export default class TranslateInlineSettingsTab extends PluginSettingTab {
 
 		// Provider settings
 		containerEl.createEl('div', { cls: 'mt-8' });
-		containerEl.createEl('h5', { text: `${this.plugin.settings.selectedProvider} General` });
+		new Setting(containerEl).setName(`${this.plugin.settings.selectedProvider} general`).setHeading();
 
 		// API Key
 		new Setting(containerEl)
@@ -51,11 +51,9 @@ export default class TranslateInlineSettingsTab extends PluginSettingTab {
 			);
 
 		this.plugin.currentProvider.getSupportedLanguages().then(({ fromLanguages, toLanguages }) => {
-			// Example of populating 'from' language dropdown
-			// Repeat similarly for 'to' language dropdown
 			new Setting(containerEl)
-				.setName('Default source Language')
-				.setDesc('Select a default source Language')
+				.setName('Default source language')
+				.setDesc('Select a default source language')
 				.addDropdown(drop => {
 					fromLanguages.forEach(lang => {
 						drop.addOption(lang.code, lang.name);
@@ -67,8 +65,8 @@ export default class TranslateInlineSettingsTab extends PluginSettingTab {
 				});
 
 			new Setting(containerEl)
-				.setName('Default target Language')
-				.setDesc('Select a default target Language')
+				.setName('Default target language')
+				.setDesc('Select a default target language')
 				.addDropdown(drop => {
 					toLanguages.forEach(lang => {
 						drop.addOption(lang.code, lang.name);
@@ -82,7 +80,7 @@ export default class TranslateInlineSettingsTab extends PluginSettingTab {
 			containerEl.createEl('div', { cls: 'mt-4' });
 
 			if (Object.entries(this.plugin.currentProvider.settingsMetadata).length > 0) {
-				containerEl.createEl('h5', { text: `${this.plugin.settings.selectedProvider} Advanced` });
+				new Setting(containerEl).setName(`${this.plugin.settings.selectedProvider} advanced`).setHeading();
 			}
 			// Iterate over the settings of the selected provider and create a setting for each
 			Object.entries(this.plugin.currentProvider.settingsMetadata || {}).forEach(([key, settingMetadata]) => {
@@ -143,6 +141,7 @@ export default class TranslateInlineSettingsTab extends PluginSettingTab {
 			// Advanced settings
 			// containerEl.createEl('div', { cls: 'mt-8' });
 			// containerEl.createEl('h5', { text: 'Advanced' });
+			// new Setting(containerEl).setName('Advanced').setHeading();
 			// new Setting(containerEl)
 			// 	.setName('Use secure Storage')
 			// 	.setDesc('Encrypt API keys using Electron secureStorage if available.')

@@ -31,17 +31,14 @@ export default class TranslateInline extends Plugin {
 	async loadSettings() {
 		this.settings = Object.assign({}, defaultSettings, await this.loadData());
 		// Iterate over provider settings and decrypt the API keys
-		console.log(safeStorage, safeStorage?.isEncryptionAvailable());
 		if (this.settings.useSecureStorage) {
 			for (const providerId in this.settings.providerSettings) {
 				const providerSettings = this.settings.providerSettings[providerId];
-				console.log('loading ... Encrypted API key', providerId, providerSettings.apiKey);
 				if (providerSettings.apiKey) {
 					providerSettings.apiKey =
 						safeStorage?.decryptString(Buffer.from(providerSettings.apiKey, 'hex')) ||
 						providerSettings.apiKey;
 				}
-				console.log('loading ... Decrypted API key', providerId, providerSettings.apiKey);
 			}
 		}
 	}
@@ -53,12 +50,10 @@ export default class TranslateInline extends Plugin {
 		if (settingsToStore.useSecureStorage) {
 			for (const providerId in settingsToStore.providerSettings) {
 				const providerSettings = settingsToStore.providerSettings[providerId];
-				console.log('saving ... Decrypted API key', providerId, providerSettings.apiKey);
 				if (providerSettings.apiKey) {
 					providerSettings.apiKey =
 						safeStorage?.encryptString(providerSettings.apiKey).toString('hex') || providerSettings.apiKey;
 				}
-				console.log('savin ... Encrypted API key', providerId, providerSettings.apiKey);
 			}
 		}
 		await this.saveData(settingsToStore);
